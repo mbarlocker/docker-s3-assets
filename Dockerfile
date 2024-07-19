@@ -11,7 +11,7 @@ RUN mkdir -p /app/mirror /app/upload \
     && chown -R app:app /app
 
 WORKDIR /app
-VOLUME ["/home/dev/.aws", "/app/mirror", "/app/upload"]
+VOLUME ["/home/app/.aws", "/app/mirror", "/app/upload"]
 EXPOSE 9000
 
 COPY entry.sh /entry-app.sh
