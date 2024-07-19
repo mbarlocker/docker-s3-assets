@@ -40,6 +40,7 @@ services:
     volumes:
       - ./mirror:/app/mirror
       - ./upload:/app/upload
+      - ./env.sh:/env.sh
       - $HOME/.aws:/home/app/.aws
 ```
 
