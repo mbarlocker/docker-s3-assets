@@ -88,8 +88,10 @@ upload() {
 set -e
 
 cd "${ROOT}"
-nvm install
-nvm use
+if ! ( nvm use 2>/dev/null ); then
+	nvm install
+	nvm use
+fi
 corepack enable
 yarn install
 
