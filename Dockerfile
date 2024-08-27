@@ -14,5 +14,5 @@ WORKDIR /app
 VOLUME ["/home/app/.aws", "/app/mirror", "/app/upload"]
 EXPOSE 9000
 
-COPY entry.sh /entry-app.sh
+COPY entry.sh /startup/app/999-app
 COPY env.sh /env.sh
