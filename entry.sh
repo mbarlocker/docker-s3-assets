@@ -3,8 +3,6 @@ set -e
 source ~/.bashnvm
 source /env.sh
 
-cat /home/app/.aws/credentials
-
 if [[ -z "${BUCKET}" ]]; then
 	echo 'No S3 bucket specified. Set BUCKET environment to start.'
 	exit 1
