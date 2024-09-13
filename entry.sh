@@ -93,7 +93,7 @@ fi
 corepack enable
 yarn install
 
-download
+download || echo 'Initial sync failed!' >&2
 upload &
 
 yarn dev
