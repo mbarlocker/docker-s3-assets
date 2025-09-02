@@ -26,6 +26,9 @@ else
 	mkdir -p "${UPLOAD}"
 fi
 
+chown app:app "${MIRROR}"
+chown app:app "${UPLOAD}"
+
 download() {
 	echo "syncing ${BUCKET} to ${MIRROR}"
 	aws --profile "${PROFILE}" s3 sync --delete "s3://${BUCKET}/" "${MIRROR}/"
