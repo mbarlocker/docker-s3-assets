@@ -17,17 +17,19 @@ ROOT="/app"
 MIRROR="${ROOT}/mirror"
 UPLOAD="${ROOT}/upload"
 
-mkdir -p "${MIRROR}"
+if [[ ! -d "${MIRROR}" ]]; then
+	mkdir -p "${MIRROR}"
+	chown app:app "${MIRROR}"
+fi
 
 if [[ -d "${UPLOAD}" ]]; then
 	# delete empty directories
 	find "${UPLOAD}" -mindepth 1 -type d -empty ! -delete
+	chown -R app:app "${UPLOAD}"
 else
 	mkdir -p "${UPLOAD}"
+	chown app:app "${UPLOAD}"
 fi
-
-chown app:app "${MIRROR}"
-chown app:app "${UPLOAD}"
 
 download() {
 	echo "syncing ${BUCKET} to ${MIRROR}"
