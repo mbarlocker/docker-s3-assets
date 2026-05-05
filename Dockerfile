@@ -15,4 +15,7 @@ VOLUME ["/home/app/.aws", "/app/mirror", "/app/upload"]
 EXPOSE 9000
 
 COPY entry.sh /startup/app/999-app
+RUN bash -n /startup/app/999-app
+
 COPY env.sh /env.sh
+RUN bash -n /env.sh
