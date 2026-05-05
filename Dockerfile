@@ -1,4 +1,4 @@
-FROM mbarlocker/docker-typescript-dev:v0.0.3
+FROM mbarlocker/docker-typescript-dev:v0.0.4
 
 ENV TZ="UTC"
 ARG DEBIAN_FRONTEND=noninteractive
