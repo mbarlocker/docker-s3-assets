@@ -43,8 +43,7 @@ upload() {
 	while true; do
 		FOUND=
 
-		# piped from find
-		while read LOCAL; do
+		while IFS= read -r -d '' LOCAL; do
 			FILE="$(basename "${LOCAL}")"
 			EXT="${FILE##*.}"
 
@@ -77,7 +76,7 @@ upload() {
 			aws --profile "${PROFILE}" s3 mv --cache-control 'public, max-age=31536000, immutable' "${LOCAL}" "s3://${BUCKET}/${LOCAL_HASH#*/}"
 
 			FOUND=1
-		done <<< "$(find "$(basename "${UPLOAD}")" -type f)"
+		done < <(find "${UPLOAD}" -type f -print0)
 
 		if [[ -n "${FOUND}" ]]; then
 			echo 'Resync local mirror'
