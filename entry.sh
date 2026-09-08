@@ -66,7 +66,7 @@ upload() {
 				s3 mv \
 				--cache-control 'public, max-age=31536000, immutable' \
 				"${LOCAL}" \
-				"s3://${BUCKET}/${LOCAL_HASH#*/}"
+				"s3://${BUCKET}/${LOCAL_HASH#"${UPLOAD}/"}"
 
 			FOUND=1
 		done < <(find "${UPLOAD}" -type f -print0)
